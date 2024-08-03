@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Human heart app</title>
+
+    <meta charset="utf-8" />
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge" />-->
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="css/index.css">
+
+    <script src="/js/dist/aframe.1.5.0.min.js"></script>
+    <script src="/js/dist/aframe-ar.min.js"></script>
+    <script src="/js/dist/aframe-ar-gestures.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene
+      sound-handler
+      button-handler
+      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+      embedded
+      renderer="logarithmicDepthBuffer: true;"
+      vr-mode-ui="enabled: false"
+      gesture-detector
+      id="scene"
+    >
+      <a-marker 
+        preset="pattern"
+        type="pattern"
+        url="./assets/ar-targets/heart.patt"
+        raycaster="objects: .clickable"
+        emitevents="true"
+        cursor="fuse: false; rayOrigin: mouse;"
+      >
+        <a-entity
+            gltf-model="./assets/models/human-heart/scene.gltf"
+            rotate="0 0 0"
+            scale="0.5 0.5 0.5"
+            position="0 0 0"
+            class="clickable"
+            gesture-handler
+          >
+      </a-marker>
+
+      <a-entity camera></a-entity>
+
+    </a-scene>
+    <button id="button1">Position 1</button>
+    <button id="button2">Position 2</button>
+    <script src="/js/index.js"></script>
+  </body>
+</html>
